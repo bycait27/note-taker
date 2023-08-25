@@ -2,6 +2,8 @@
 const express = require('express');
 // import path module
 const path = require('path');
+// import api
+const noteData = require('./db/db.json');
 
 // declare app variable
 const app = express();
@@ -19,6 +21,11 @@ app.get('/index', (req, res) => {
 // create a route that will serve the notes.html file to the user when clicking 'Get Started'
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'))
+});
+
+// retrieve notes data
+app.get('/api/notes', (req, res) => {
+    res.json(noteData)
 });
 
 app.listen(PORT, () => {
