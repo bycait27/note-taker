@@ -12,7 +12,7 @@ Install Express.js in order to run the server.
 
 ## Usage
 
-Once the user has installed the appropriate packages, they will type "express server.js" into the terminal. This will display to the user a live server where they can interact with the notes app via a browser. Another way they can interact with the app is via Heroku. The user will first see the notes app with a "Get Started" button. When the user clicks on this button, they will be taken to a notepad where they can see their previously written notes. If they click the plus sign in the top right corner of the app, they can start a new note and then save it by clicking the save icon next to the add button. Their new note should then be displayed with their other notes.
+Once the user has installed the appropriate packages, they will type "node server.js" into the terminal. This will display to the user a live server where they can interact with the notes app via a browser. Another way they can interact with the app is via Heroku. The user will first see the notes app with a "Get Started" button. When the user clicks on this button, they will be taken to a notepad where they can see their previously written notes. If they click the plus sign in the top right corner of the app, they can start a new note and then save it by clicking the save icon next to the add button. Their new note should then be displayed with their other notes.
 
 <!-- add mockup images -->
 ![mockup 1](/assets/images/11-express-homework-demo-01.png)
