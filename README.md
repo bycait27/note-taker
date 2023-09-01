@@ -19,6 +19,8 @@ Once the user has installed the appropriate packages, they will type "node serve
 
 ![mockup 2](/assets/images/11-express-homework-demo-02.png)
 
+[Heroku Note Taker App](https://note-taker-5789-75c1d78b654b.herokuapp.com/)
+
 ## Credits
 
 [Express](https://expressjs.com/)
