@@ -1,2 +1,3 @@
 # node modules folder will be ignored in git repo
 /node_modules
+.DS_Store
