@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express.static('public'));
 
 // create a route that will serve the index.html file to user
-app.get('/index', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html')) // send file to browser
 });
 
@@ -25,7 +25,17 @@ app.get('/notes', (req, res) => {
 
 // retrieve notes data
 app.get('/api/notes', (req, res) => {
-    res.json(noteData)
+    // TODO: fix this code
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        const parsedData = JSON.parse(data);
+
+        res.json(parsedData);
+    });
 });
 
 // post request to post a new note
