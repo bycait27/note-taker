@@ -28,7 +28,6 @@ app.get('/notes', (req, res) => {
 
 // retrieve notes data
 app.get('/api/notes', (req, res) => {
-    // TODO: fix this code
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
@@ -68,6 +67,39 @@ app.post('/api/notes', (req, res) => {
             const response = {
                 status: 'Success!',
                 body: newNote,
+            };
+
+            console.log(response);
+            res.status(201).json(response);
+        });
+    });
+});
+
+// delete request to delete a note
+app.delete('/api/notes/:id', (req, res) => {
+    console.info(`${req.method} request received to delete a note`);
+
+    const noteId = req.params.id;
+    console.log('noteId:', noteId);
+
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        const parsedData = JSON.parse(data);
+        const newData = parsedData.filter((note) => note.id !== noteId);
+
+        fs.writeFile('./db/db.json', JSON.stringify(newData), (writeErr) => {
+            if (writeErr) {
+                console.error(writeErr);
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+
+            const response = {
+                status: 'Success!',
+                body: newData,
             };
 
             console.log(response);
