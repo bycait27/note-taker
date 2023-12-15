@@ -10,11 +10,14 @@ const app = express();
 // declare PORT variable
 const PORT = process.env.PORT || 3001;
 
+// middleware for parsing JSON and urlencoded form data
+app.use(express.json());
+
 // invoke app.use() and serve static files from the public folder
 app.use(express.static('public'));
 
 // create a route that will serve the index.html file to user
-app.get('/index', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html')) // send file to browser
 });
 
@@ -25,7 +28,16 @@ app.get('/notes', (req, res) => {
 
 // retrieve notes data
 app.get('/api/notes', (req, res) => {
-    res.json(noteData)
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        const parsedData = JSON.parse(data);
+
+        res.json(parsedData);
+    });
 });
 
 // post request to post a new note
@@ -36,18 +48,64 @@ app.post('/api/notes', (req, res) => {
         text: req.body.text,
         id: uuid(),
     };
-    // appends new note to existing notes data
-    noteData.push(newNote);
-    fs.writeFileSync('./db/db.json', JSON.stringify(noteData));
-    res.json(newNote);
-    // variable for response to console
-    const response = {
-        status: 'Success!',
-        body: newNote,
-    };
-    // logs 'Success!' to the console if the note is successfully saved
-    console.log(response);
-    res.status(201).json(response);
+
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        const parsedData = JSON.parse(data);
+        parsedData.push(newNote);
+
+        fs.writeFile('./db/db.json', JSON.stringify(parsedData), (writeErr) => {
+            if (writeErr) {
+                console.error(writeErr);
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+
+            const response = {
+                status: 'Success!',
+                body: newNote,
+            };
+
+            console.log(response);
+            res.status(201).json(response);
+        });
+    });
+});
+
+// delete request to delete a note
+app.delete('/api/notes/:id', (req, res) => {
+    console.info(`${req.method} request received to delete a note`);
+
+    const noteId = req.params.id;
+    console.log('noteId:', noteId);
+
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        const parsedData = JSON.parse(data);
+        const newData = parsedData.filter((note) => note.id !== noteId);
+
+        fs.writeFile('./db/db.json', JSON.stringify(newData), (writeErr) => {
+            if (writeErr) {
+                console.error(writeErr);
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+
+            const response = {
+                status: 'Success!',
+                body: newData,
+            };
+
+            console.log(response);
+            res.status(201).json(response);
+        });
+    });
 });
 
 // console logs 'App is listening at http://localhost:3001'
