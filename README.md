@@ -18,7 +18,7 @@ Note Taker is a web-based application that allows users to write, save, and dele
 
 ## Live Demo 
 
-[🌐 View Live Application]()
+[🌐 View Live Application](https://note-taker-app-a9b1e92f62cd.herokuapp.com/)
 
 ## Technology Stack 
 
@@ -78,7 +78,7 @@ node server.js
 
 1. Click the **plus icon (➕)** in the top-right corner
 2. Enter a title in the **"Note Title"** field 
-3. Add your content in the text area below 
+3. Add your content in the **Note Text** field 
 4. Click the **save icon(💾)** to save your note 
 
 ### Viewing Notes 
@@ -102,6 +102,20 @@ node server.js
 
 
 ## Screenshots 
+
+### Landing Page 
+
+*Clean, welcoming interface with clear call-to-action*
+
+![](./public/assets/images/note-taker-landing.png)
+
+### Notes Interface 
+
+*Split-panel design with note list and editor*
+
+![](./public/assets/images/11-express-homework-demo-01.png)
+
+![](./public/assets/images/11-express-homework-demo-02.png)
 
 ## Development 
 
