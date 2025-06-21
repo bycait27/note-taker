@@ -2,6 +2,20 @@
 
 A full-stack web application for creating, viewing, and managing notes with a clean, intuitive interface powered by Express.js.
 
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Live Demo](#live-demo)
+- [Technology Stack](#technology-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Screenshots](#screenshots)
+- [Development](#development)
+- [Deployment](#deployment)
+- [License](#license)
+- [Contact](#contact)
+
 ## Overview
 
 Note Taker is a web-based application that allows users to write, save, and delete notes. Built with Express.js on the back-end and vanilla JavaScript on the front-end, it provides a seamless note-taking experience with persistent data storage. The application features a responsive design and is deployed on Heroku for easy access from anywhere. 
