@@ -1,52 +1,153 @@
 # Note Taker
 
-## Description
+A full-stack web application for creating, viewing, and managing notes with a clean, intuitive interface powered by Express.js.
 
-This is an application built with Node.js and Express.js. It is an app for taking notes via Heroku or a live server. This app was created to help the user keep track of things they need to do, small notes, or anything they might need to record and remember later! While creating this application, it helped me understand better how to connect the front end of an app to the back en of an app. I enjoyed going through this process and it was very nice to see it all come together.
+## Overview
+
+Note Taker is a web-based application that allows users to write, save, and delete notes. Built with Express.js on the back-end and vanilla JavaScript on the front-end, it provides a seamless note-taking experience with persistent data storage. The application features a responsive design and is deployed on Heroku for easy access from anywhere. 
+
+## Features 
+
+**- Create Notes:** Write and save notes with custom titles and content   
+**- View Notes:** Browse all saved notes in an organized sidebar  
+**- Delete Notes:** Remove unwanted notes with a single click   
+**- Persistent Storage:** All notes are saved to JSON file storage  
+**- Responsive Design:** Works seamlessly across desktop and mobile devices  
+**- Real-time Updates:** Dynamic interface updates without page refreshes  
+**- Cloud Deployment:** Hosted on Heroku for universal access  
+
+## Live Demo 
+
+[🌐 View Live Application]()
+
+## Technology Stack 
+
+**Back-end:**
+- Node.js 
+- Express.js 
+- File System (fs) for data persistence 
+- Custom UUID generation 
+
+**Front-end:**
+- HTML5 
+- CSS3 
+- Vanilla JavaScript 
+- Bootstrap 5.2.3 
+- Font Awesome Icons 
+
+**Deployment:**
+- Heroku
 
 ## Installation
 
-Install Express.js in order to run the server.
+### Prerequisites 
+- Node.js (v12.0.0 or higher)
+- npm (Node Package Manager) 
 
-<!-- Heroku? -->
+### Local Setup
+
+1. Clone the repository:
+
+```bash
+git clone git@github.com:bycait27/note-taker.git 
+cd note-taker
+```
+
+2. Install dependencies:
+
+```bash 
+npm install
+```
+
+3. Start the development server:
+
+```bash 
+node server.js
+```
+
+4. **Access the application:** Open your browser and navigate to `http://localhost:3001`
 
 ## Usage
 
-Once the user has installed the appropriate packages, they will type "node server.js" into the terminal. This will display to the user a live server where they can interact with the notes app via a browser. Another way they can interact with the app is via Heroku. The user will first see the notes app with a "Get Started" button. When the user clicks on this button, they will be taken to a notepad where they can see their previously written notes. If they click the plus sign in the top right corner of the app, they can start a new note and then save it by clicking the save icon next to the add button. Their new note should then be displayed with their other notes.
+### Getting Started 
 
-<!-- add mockup images -->
-![mockup 1](/assets/images/11-express-homework-demo-01.png)
+1. Click the **"Get Started"** button on the landing page
+2. You'll be taken to the notes interface
 
-![mockup 2](/assets/images/11-express-homework-demo-02.png)
+### Creating a Note 
 
-[Heroku Note Taker App](https://note-taker-5789-75c1d78b654b.herokuapp.com/)
+1. Click the **plus icon (➕)** in the top-right corner
+2. Enter a title in the **"Note Title"** field 
+3. Add your content in the text area below 
+4. Click the **save icon(💾)** to save your note 
 
-## Credits
+### Viewing Notes 
+- All saved notes appear in the left sidebar 
+- Click on any note title to view its content
+- The selected note will display the main content area 
 
-[Express](https://expressjs.com/)
+### Deleting Notes 
+- Click the **trash icon (️🗑️)** next to any note in the sidebar 
+- The note will be permanently removed
 
-[Heroku](https://devcenter.heroku.com/)
+## API Endpoints 
 
-## License
+| Method | Endpoint | Description |
+| --------------- | --------------- | --------------- |
+| `GET` | `/` | Serves the landing page |
+| `GET` | `/notes` | Serves the notes interface |
+| `GET` | `/api/notes` | Retrieves all saved notes |
+| `POST` | `/api/notes` | Creates a new note |
+| `DELETE` | `/api/notes/:id` | Deletes a note by ID |
 
-MIT License
 
-Copyright (c) 2023 Caitlin Ash
+## Screenshots 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## Development 
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### Available Scripts 
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+```bash
+# start the server 
+npm start 
+# or 
+node server.js
+```
+
+### Environment Variables 
+
+The application uses the following environment variable:
+
+- `PORT`: Server port (defaults to 3001 for local development)
+
+## Deployment
+
+The application is configured for Heroku deployment:
+
+1. Deploy to Heroku:
+
+```bash
+heroku create note-taker-app 
+git push heroku main
+```
+
+2. Set environment variables:
+
+```bash
+heroku config:set NODE_ENV=production
+```
+
+## License 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+
+see LICENSE file for more details
+
+## Contact
+
+**GitHub:** [@bycait27](https://github.com/bycait27)  
+**Portfolio Website:** [caitlinash.io](https://caitlinash.io/)  
+**LinkedIn:** [Caitlin Ash](https://www.linkedin.com/in/caitlin-ash/)  
+
+---
+*This project was originally created as part of my Full-Stack Developer Bootcamp program.*
